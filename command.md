@@ -1,0 +1,1 @@
+php console/yii app/setup
