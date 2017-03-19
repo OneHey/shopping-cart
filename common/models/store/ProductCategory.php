@@ -3,7 +3,8 @@
 namespace common\models\store;
 
 use Yii;
-
+use yii\behaviors\TimestampBehavior;
+use yii\behaviors\BlameableBehavior;
 /**
  * This is the model class for table "product_category".
  *
@@ -22,6 +23,14 @@ class ProductCategory extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'product_category';
+    }
+
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+            BlameableBehavior::className(),
+        ];
     }
 
     /**
@@ -49,5 +58,8 @@ class ProductCategory extends \yii\db\ActiveRecord
             'update_at' => 'Update At',
             'updated_at' => 'Updated At',
         ];
+    }
+    public function getCreate(){
+        return $this->hasOne(User::className(), ['id' => 'created_by']);
     }
 }
