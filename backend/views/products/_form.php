@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\store\ProductCategory */
+/* @var $model common\models\store\Products */
 /* @var $form yii\bootstrap\ActiveForm */
 ?>
 
-<div class="product-category-form">
+<div class="products-form">
 
     <?php $form = ActiveForm::begin([
     'layout' => 'horizontal',
@@ -18,11 +18,19 @@ use yii\bootstrap\ActiveForm;
 
     <?php echo $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
+    <?php echo $form->field($model, 'CategoryId')->textInput() ?>
+
+    <?php echo $form->field($model, 'Des')->textarea(['rows' => 6]) ?>
+
+    <?php echo $form->field($model, 'img_url')->textInput(['maxlength' => true]) ?>
+
+    <?php echo $form->field($model, 'img_path')->textInput(['maxlength' => true]) ?>
+
     <?php echo $form->field($model, 'status')->textInput() ?>
 
     <?php echo $form->field($model, 'created_at')->textInput() ?>
 
-    <?php echo $form->field($model, 'updated_at')->textInput() ?>
+    <?php echo $form->field($model, 'update_at')->textInput() ?>
 
     <?php echo $form->field($model, 'created_by')->textInput() ?>
 

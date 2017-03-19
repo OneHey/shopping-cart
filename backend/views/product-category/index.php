@@ -27,17 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'status',
-            'created_at:datetime',
-            'updated_at:datetime',
-            // 'updated_at',
-            'created_by',
-            [
-                'attribute' =>'created_by',
-                'format' =>'raw',
-                'value' =>function($model){
-                return isset($model->created) ? $model ->created->username: '';
-                },
-            ],
+            'created_at',
+            'updated_at',
+            // 'created_by',
+            // 'updated_by',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
