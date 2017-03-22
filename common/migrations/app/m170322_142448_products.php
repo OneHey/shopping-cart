@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m170322_135625_products extends Migration
+class m170322_142448_products extends Migration
 {
     public function up()
     {
@@ -15,7 +15,7 @@ class m170322_135625_products extends Migration
             'img_path' =>$this->String(255),
             'status' =>$this->smallInteger()->defaultValue(1),
             'created_at' =>$this->integer(),
-            'update_at' =>$this->integer(),
+            'updated_at' =>$this->integer(),
             'created_by' =>$this->integer(),
             'updated_by' =>$this->integer(),
         ]);
@@ -23,7 +23,7 @@ class m170322_135625_products extends Migration
 
     public function down()
     {
-        echo "m170322_135625_products cannot be reverted.\n";
+        echo "m170322_142448_products cannot be reverted.\n";
 
         return false;
     }

@@ -15,7 +15,7 @@ use Yii;
  * @property string $img_path
  * @property integer $status
  * @property integer $created_at
- * @property integer $update_at
+ * @property integer $updated_at
  * @property integer $created_by
  * @property integer $updated_by
  */
@@ -36,7 +36,7 @@ class Products extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'CategoryId'], 'required'],
-            [['CategoryId', 'status', 'created_at', 'update_at', 'created_by', 'updated_by'], 'integer'],
+            [['CategoryId', 'status', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
             [['Des'], 'string'],
             [['name', 'img_url', 'img_path'], 'string', 'max' => 255],
         ];
@@ -56,7 +56,7 @@ class Products extends \yii\db\ActiveRecord
             'img_path' => 'Img Path',
             'status' => 'Status',
             'created_at' => 'Created At',
-            'update_at' => 'Update At',
+            'updated_at' => 'Updated At',
             'created_by' => 'Created By',
             'updated_by' => 'Updated By',
         ];
