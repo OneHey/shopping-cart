@@ -3,6 +3,7 @@
 namespace common\models\store;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "product_category".
@@ -35,7 +36,12 @@ class ProductCategory extends \yii\db\ActiveRecord
             [['name'], 'string', 'max' => 255],
         ];
     }
-
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
+    }
     /**
      * @inheritdoc
      */
@@ -51,4 +57,7 @@ class ProductCategory extends \yii\db\ActiveRecord
             'updated_by' => 'Updated By',
         ];
     }
+    //    public function getCreate(){
+//        return $this->hasOne(User::className(), ['id' => 'created_by']);
+//    }
 }

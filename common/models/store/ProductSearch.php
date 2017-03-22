@@ -8,9 +8,9 @@ use yii\data\ActiveDataProvider;
 use common\models\store\Products;
 
 /**
- * ProductsSearch represents the model behind the search form about `common\models\store\Products`.
+ * ProductSearch represents the model behind the search form about `common\models\store\Products`.
  */
-class ProductsSearch extends Products
+class ProductSearch extends Products
 {
     /**
      * @inheritdoc
@@ -43,14 +43,21 @@ class ProductsSearch extends Products
     {
         $query = Products::find();
 
+        // add conditions that should always apply here
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
 
-        if (!($this->load($params) && $this->validate())) {
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
             return $dataProvider;
         }
 
+        // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
             'CategoryId' => $this->CategoryId,

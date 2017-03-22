@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m170319_123930_products extends Migration
+class m170322_135625_products extends Migration
 {
     public function up()
     {
@@ -23,7 +23,7 @@ class m170319_123930_products extends Migration
 
     public function down()
     {
-        echo "m170319_123930_products cannot be reverted.\n";
+        echo "m170322_135625_products cannot be reverted.\n";
 
         return false;
     }

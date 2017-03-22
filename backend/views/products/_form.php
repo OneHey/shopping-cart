@@ -1,68 +1,40 @@
 <?php
 
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\store\Products */
-/* @var $form yii\bootstrap\ActiveForm */
+/* @var $form yii\widgets\ActiveForm */
 ?>
 
 <div class="products-form">
 
-    <?php $form = ActiveForm::begin([
-    'layout' => 'horizontal',
-    ]); ?>
+    <?php $form = ActiveForm::begin(); ?>
 
-    <?php echo $form->errorSummary($model); ?>
+    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?php echo $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'CategoryId')->textInput() ?>
 
-    <?php echo $form->field($model, 'CategoryId')->textInput() ?>
+    <?= $form->field($model, 'Des')->textarea(['rows' => 6]) ?>
 
-    <?php echo $form->field($model, 'Des')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'img_url')->textInput(['maxlength' => true]) ?>
 
-    <?php echo $form->field($model, 'img_url')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'img_path')->textInput(['maxlength' => true]) ?>
 
-    <?php echo $form->field($model, 'img_path')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'status')->textInput() ?>
 
-    <?php echo $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'created_at')->textInput() ?>
 
-    <?php echo $form->field($model, 'created_at')->textInput() ?>
+    <?= $form->field($model, 'update_at')->textInput() ?>
 
-    <?php echo $form->field($model, 'update_at')->textInput() ?>
+    <?= $form->field($model, 'created_by')->textInput() ?>
 
-    <?php echo $form->field($model, 'created_by')->textInput() ?>
-
-    <?php echo $form->field($model, 'updated_by')->textInput() ?>
-
+    <?= $form->field($model, 'updated_by')->textInput() ?>
 
     <div class="form-group">
-        <div class="col-sm-3 col-xs-2"></div>
-        <div class="col-sm-3 col-xs-4">
-            <?php 
-            echo \yii\helpers\Html::a('<span class="glyphicon glyphicon-arrow-left"></span>'. Yii::t('backend', 'Back'), ['index'],['class'=>'btn btn-default btn200']);
-            ?>
-        </div>
-        <div class="col-sm-3 col-xs-4">
-            <?php echo  Html::submitButton($model->isNewRecord ? Yii::t('backend', 'Create') : Yii::t('backend', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success btn200' : 'btn btn-primary btn200']) ?>
-        </div>
-        <div class="col-sm-3 col-xs-2">
-            <?php 
-            if (!$model->isNewRecord) {
-                echo Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->id],
-                    [
-                        'class' => 'btn btn-warning btn200 bold',
-                        'data' => [
-                            'confirm' => 'Are you sure you want to delete?',
-                            'method' => 'post',
-                        ]
-                    ]);
-            }
-            ?>
-        </div>
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
-
 
     <?php ActiveForm::end(); ?>
 

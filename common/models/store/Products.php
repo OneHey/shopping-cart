@@ -61,7 +61,4 @@ class Products extends \yii\db\ActiveRecord
             'updated_by' => 'Updated By',
         ];
     }
-    public function getCreate(){
-        return $this->hasOne(User::className(), ['id' => 'created_by']);
-    }
 }
