@@ -57,7 +57,7 @@ class ProductCategory extends \yii\db\ActiveRecord
             'updated_by' => 'Updated By',
         ];
     }
-    //    public function getCreate(){
+//        public function getCreate(){
 //        return $this->hasOne(User::className(), ['id' => 'created_by']);
-//    }
+//   }
 }

@@ -5,12 +5,12 @@ namespace common\models\store;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\store\Products;
+use common\models\store\Sanpham;
 
 /**
- * ProductSearch represents the model behind the search form about `common\models\store\Products`.
+ * TimSanpham represents the model behind the search form about `common\models\store\Sanpham`.
  */
-class ProductSearch extends Products
+class TimSanpham extends Sanpham
 {
     /**
      * @inheritdoc
@@ -41,7 +41,7 @@ class ProductSearch extends Products
      */
     public function search($params)
     {
-        $query = Products::find();
+        $query = Sanpham::find();
 
         // add conditions that should always apply here
 

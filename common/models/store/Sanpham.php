@@ -3,9 +3,9 @@
 namespace common\models\store;
 
 use Yii;
-
+use yii\behaviors\TimestampBehavior;
 /**
- * This is the model class for table "products".
+ * This is the model class for table "sanpham".
  *
  * @property integer $id
  * @property string $name
@@ -19,16 +19,21 @@ use Yii;
  * @property integer $created_by
  * @property integer $updated_by
  */
-class Products extends \yii\db\ActiveRecord
+class Sanpham extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'products';
+        return 'sanpham';
     }
-
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
+    }
     /**
      * @inheritdoc
      */

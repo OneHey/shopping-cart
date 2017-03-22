@@ -24,9 +24,9 @@ use yii\bootstrap\ActiveForm;
 
     <?php echo $form->field($model, 'updated_at')->textInput() ?>
 
-<!--    --><?php //echo $form->field($model, 'created_by')->textInput() ?>
-<!---->
-<!--    --><?php //echo $form->field($model, 'updated_by')->textInput() ?>
+    <?php echo $form->field($model, 'created_by')->textInput() ?>
+
+    <?php echo $form->field($model, 'updated_by')->textInput() ?>
 
 
     <div class="form-group">

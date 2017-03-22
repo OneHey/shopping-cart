@@ -3,16 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\store\Products;
-use common\models\store\ProductSearch;
+use common\models\store\Sanpham;
+use common\models\store\TimSanpham;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ProductController implements the CRUD actions for Products model.
+ * SanphamController implements the CRUD actions for Sanpham model.
  */
-class ProductController extends Controller
+class SanphamController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class ProductController extends Controller
     }
 
     /**
-     * Lists all Products models.
+     * Lists all Sanpham models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ProductSearch();
+        $searchModel = new TimSanpham();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Displays a single Products model.
+     * Displays a single Sanpham model.
      * @param integer $id
      * @return mixed
      */
@@ -57,13 +57,13 @@ class ProductController extends Controller
     }
 
     /**
-     * Creates a new Products model.
+     * Creates a new Sanpham model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Products();
+        $model = new Sanpham();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -75,7 +75,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Updates an existing Products model.
+     * Updates an existing Sanpham model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -94,7 +94,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Deletes an existing Products model.
+     * Deletes an existing Sanpham model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -107,15 +107,15 @@ class ProductController extends Controller
     }
 
     /**
-     * Finds the Products model based on its primary key value.
+     * Finds the Sanpham model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Products the loaded model
+     * @return Sanpham the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Products::findOne($id)) !== null) {
+        if (($model = Sanpham::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

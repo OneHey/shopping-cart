@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use common\models\store\ProductCategory;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\store\ProductCategorySerach */
@@ -29,8 +30,22 @@ $this->params['breadcrumbs'][] = $this->title;
             'status',
             'created_at:datetime',
             'updated_at:datetime',
-             'created_by',
-             'updated_by',
+            'created_by',
+            [
+                'attribute' => 'created_by',
+                'content' => function ($model) {
+                    $created_by = ProductCategory::find()->where(['name' => $model->created_by])->one();
+                    if($created_by){
+                        return $created_by=$model->status;
+                    }
+                },
+
+//                'format' => 'raw',
+//                'value' => function ($model) {
+//                    return isset($model->created) ? $model->created->username : ' ';
+//                },
+            ],
+            'updated_by',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
