@@ -2,7 +2,10 @@
 
 namespace common\models\store;
 
+use trntv\filekit\behaviors\UploadBehavior;
 use Yii;
+use yii\behaviors\BlameableBehavior;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "products".
@@ -23,6 +26,8 @@ use Yii;
  */
 class Products extends \yii\db\ActiveRecord
 {
+    public $product_image;
+
     /**
      * @inheritdoc
      */
@@ -42,6 +47,21 @@ class Products extends \yii\db\ActiveRecord
             [['prince'], 'number'],
             [['Des'], 'string'],
             [['name', 'Slug', 'img_url', 'img_path'], 'string', 'max' => 255],
+            [['product_image'], 'safe']
+        ];
+    }
+
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+            BlameableBehavior::className(),
+            [
+            'class' => UploadBehavior::className(),
+                'attribute' => 'product_image',
+                'pathAttribute' => 'img_path',
+                'baseUrlAttribute' => 'img_url'
+            ]
         ];
     }
 
@@ -52,7 +72,7 @@ class Products extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'Tên Sản Phẩm',
             'CategoryId' => 'Category ID',
             'Slug' => 'Slug',
             'prince' => 'Prince',

@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\store\ProductCategory;
 use Yii;
 use common\models\store\Products;
 use common\models\store\ProductSearch;
@@ -63,12 +64,13 @@ class ProductController extends Controller
         $model = new Products();
 
         if ($model->load(Yii::$app->request->post())) {
-            if($model->save()){
-            return $this->redirect(['index']);
+            if ($model->save()) {
+                return $this->redirect(['index']);
             }
         }
         return $this->render('create', [
-           'model' => $model,
+            'model' => $model,
+            'categories' => ProductCategory::find()->all(),
         ]);
     }
 
@@ -83,12 +85,13 @@ class ProductController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
-            if($model->save()){
+            if ($model->save()) {
                 return $this->redirect(['index']);
             }
         }
         return $this->render('update', [
-        'model' => $model,
+            'model' => $model,
+            'categories' => ProductCategory::find()->all(),
         ]);
     }
 
