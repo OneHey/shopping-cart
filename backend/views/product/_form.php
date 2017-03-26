@@ -30,7 +30,20 @@ use yii\bootstrap\ActiveForm;
 
     <?php echo $form->field($model, 'prince')->textInput() ?>
 
-    <?php echo $form->field($model, 'Des')->textarea(['rows' => 6]) ?>
+    <?php echo $form->field($model, 'Des')->widget(
+        \yii\imperavi\Widget::className(),
+        [
+            'plugins' => ['fullscreen', 'fontcolor', 'video'],
+            'options' => [
+                'minHeight' => 400,
+                'maxHeight' => 400,
+                'buttonSource' => true,
+                'convertDivs' => false,
+                'removeEmptyTags' => false,
+                'imageUpload' => Yii::$app->urlManager->createUrl(['/file-storage/upload-imperavi'])
+            ]
+        ]
+    ) ?>
 
     <?php echo $form->field($model, 'img_url')->textInput(['maxlength' => true]) ?>
 
