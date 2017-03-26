@@ -3,13 +3,15 @@
 namespace common\models\store;
 
 use Yii;
-use yii\behaviors\TimestampBehavior;
+
 /**
- * This is the model class for table "sanpham".
+ * This is the model class for table "products".
  *
  * @property integer $id
  * @property string $name
  * @property integer $CategoryId
+ * @property string $Slug
+ * @property double $prince
  * @property string $Des
  * @property string $img_url
  * @property string $img_path
@@ -19,31 +21,27 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $created_by
  * @property integer $updated_by
  */
-class Sanpham extends \yii\db\ActiveRecord
+class Products extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'sanpham';
+        return 'products';
     }
-    public function behaviors()
-    {
-        return [
-            TimestampBehavior::className(),
-        ];
-    }
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['name', 'CategoryId'], 'required'],
+            [['name', 'CategoryId', 'Slug'], 'required'],
             [['CategoryId', 'status', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
+            [['prince'], 'number'],
             [['Des'], 'string'],
-            [['name', 'img_url', 'img_path'], 'string', 'max' => 255],
+            [['name', 'Slug', 'img_url', 'img_path'], 'string', 'max' => 255],
         ];
     }
 
@@ -56,6 +54,8 @@ class Sanpham extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Name',
             'CategoryId' => 'Category ID',
+            'Slug' => 'Slug',
+            'prince' => 'Prince',
             'Des' => 'Des',
             'img_url' => 'Img Url',
             'img_path' => 'Img Path',

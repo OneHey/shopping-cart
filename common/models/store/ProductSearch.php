@@ -5,12 +5,12 @@ namespace common\models\store;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\store\Sanpham;
+use common\models\store\Products;
 
 /**
- * TimSanpham represents the model behind the search form about `common\models\store\Sanpham`.
+ * ProductSearch represents the model behind the search form about `common\models\store\Products`.
  */
-class TimSanpham extends Sanpham
+class ProductSearch extends Products
 {
     /**
      * @inheritdoc
@@ -19,7 +19,8 @@ class TimSanpham extends Sanpham
     {
         return [
             [['id', 'CategoryId', 'status', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
-            [['name', 'Des', 'img_url', 'img_path'], 'safe'],
+            [['name', 'Slug', 'Des', 'img_url', 'img_path'], 'safe'],
+            [['prince'], 'number'],
         ];
     }
 
@@ -41,26 +42,20 @@ class TimSanpham extends Sanpham
      */
     public function search($params)
     {
-        $query = Sanpham::find();
-
-        // add conditions that should always apply here
+        $query = Products::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
 
-        $this->load($params);
-
-        if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
+        if (!($this->load($params) && $this->validate())) {
             return $dataProvider;
         }
 
-        // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
             'CategoryId' => $this->CategoryId,
+            'prince' => $this->prince,
             'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
@@ -69,6 +64,7 @@ class TimSanpham extends Sanpham
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'Slug', $this->Slug])
             ->andFilterWhere(['like', 'Des', $this->Des])
             ->andFilterWhere(['like', 'img_url', $this->img_url])
             ->andFilterWhere(['like', 'img_path', $this->img_path]);

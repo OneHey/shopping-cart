@@ -2,13 +2,19 @@
 
 use yii\db\Migration;
 
-class m170319_125730_product_category extends Migration
+class m170326_101234_products extends Migration
 {
     public function up()
     {
-        $this->createTable('product_category', [
+        $this->createTable('products', [
             'id' => $this->primaryKey(),
-            'name' =>$this->string(255),
+            'name' =>$this->string(255)->notNull(),
+            'CategoryId' =>$this->integer()->notNull(),
+            'Slug'=>$this->string(255)->notNull(),
+            'prince'=>$this->float(),
+            'Des' =>$this->text(),
+            'img_url' =>$this->String(255),
+            'img_path' =>$this->String(255),
             'status' =>$this->smallInteger()->defaultValue(1),
             'created_at' =>$this->integer(),
             'updated_at' =>$this->integer(),
@@ -19,7 +25,7 @@ class m170319_125730_product_category extends Migration
 
     public function down()
     {
-        echo "m170319_125730_product_category cannot be reverted.\n";
+        echo "m170326_101234_products cannot be reverted.\n";
 
         return false;
     }

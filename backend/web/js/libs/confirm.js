@@ -8,7 +8,7 @@ yii.allowAction = function ($e) {
 yii.confirm = function (message, ok, cancel) {
     bootbox.confirm({
         title: false,
-        message: 'Are you sure you want to delete this item?',
+        message: 'Bạn có chắc muốn xóa bản ghi này?',
         buttons: {
             'cancel': {
                 label: 'Cancel',

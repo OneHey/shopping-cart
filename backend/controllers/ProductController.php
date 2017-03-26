@@ -3,39 +3,36 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\store\Sanpham;
-use common\models\store\TimSanpham;
+use common\models\store\Products;
+use common\models\store\ProductSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * SanphamController implements the CRUD actions for Sanpham model.
+ * ProductController implements the CRUD actions for Products model.
  */
-class SanphamController extends Controller
+class ProductController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
     public function behaviors()
     {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['post'],
                 ],
             ],
         ];
     }
 
     /**
-     * Lists all Sanpham models.
+     * Lists all Products models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new TimSanpham();
+        $searchModel = new ProductSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +42,7 @@ class SanphamController extends Controller
     }
 
     /**
-     * Displays a single Sanpham model.
+     * Displays a single Products model.
      * @param integer $id
      * @return mixed
      */
@@ -57,25 +54,26 @@ class SanphamController extends Controller
     }
 
     /**
-     * Creates a new Sanpham model.
+     * Creates a new Products model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Sanpham();
+        $model = new Products();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()){
+            return $this->redirect(['index']);
+            }
         }
+        return $this->render('create', [
+           'model' => $model,
+        ]);
     }
 
     /**
-     * Updates an existing Sanpham model.
+     * Updates an existing Products model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -84,17 +82,18 @@ class SanphamController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()){
+                return $this->redirect(['index']);
+            }
         }
+        return $this->render('update', [
+        'model' => $model,
+        ]);
     }
 
     /**
-     * Deletes an existing Sanpham model.
+     * Deletes an existing Products model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -107,18 +106,18 @@ class SanphamController extends Controller
     }
 
     /**
-     * Finds the Sanpham model based on its primary key value.
+     * Finds the Products model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Sanpham the loaded model
+     * @return Products the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Sanpham::findOne($id)) !== null) {
+        if (($model = Products::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            throw new NotFoundHttpException('The Products item does not exist.');
         }
     }
 }

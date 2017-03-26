@@ -5,7 +5,6 @@ return [
     'showScriptName'=>false,
     //chỉnh sửa định tuyến
     'rules'=>[
-        'about'=>'page/about',
-        'trang-Chu'=>'site/index',
+
     ],
 ];

@@ -49,12 +49,12 @@ class ProductCategory extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'created_by' => 'Created By',
-            'updated_by' => 'Updated By',
+            'name' => 'Tên',
+            'status' => 'Trạng Thái',
+            'created_at' => 'Tạo Lúc',
+            'updated_at' => 'Cập Nhật Lúc',
+            'created_by' => 'Tạo Bởi',
+            'updated_by' => 'Cập Nhật Bởi',
         ];
     }
 //        public function getCreate(){

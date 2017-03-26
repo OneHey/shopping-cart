@@ -8,54 +8,62 @@ use yii\bootstrap\ActiveForm;
 /* @var $form yii\bootstrap\ActiveForm */
 ?>
 
-<div class="product-category-form">
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title"><?= Html::encode($this->title) ?></h3>
+    </div>
+    <div class="panel-body">
+        <div class="product-category-form">
 
-    <?php $form = ActiveForm::begin([
-    'layout' => 'horizontal',
-    ]); ?>
+            <?php $form = ActiveForm::begin([
+                'layout' => 'horizontal',
+            ]); ?>
 
-    <?php echo $form->errorSummary($model); ?>
+            <?php echo $form->errorSummary($model); ?>
 
-    <?php echo $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+            <?php echo $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?php echo $form->field($model, 'status')->textInput() ?>
+            <?php echo $form->field($model, 'status')->textInput() ?>
 
-    <?php echo $form->field($model, 'created_at')->textInput() ?>
+            <?php echo $form->field($model, 'created_at')->textInput() ?>
 
-    <?php echo $form->field($model, 'updated_at')->textInput() ?>
+            <?php echo $form->field($model, 'updated_at')->textInput() ?>
 
-    <?php echo $form->field($model, 'created_by')->textInput() ?>
+            <?php echo $form->field($model, 'created_by')->textInput() ?>
 
-    <?php echo $form->field($model, 'updated_by')->textInput() ?>
+            <?php echo $form->field($model, 'updated_by')->textInput() ?>
 
 
-    <div class="form-group">
-        <div class="col-sm-3 col-xs-2"></div>
-        <div class="col-sm-3 col-xs-4">
-            <?php 
-            echo \yii\helpers\Html::a('<span class="glyphicon glyphicon-arrow-left"></span>'. Yii::t('backend', 'Back'), ['index'],['class'=>'btn btn-default btn200']);
-            ?>
-        </div>
-        <div class="col-sm-3 col-xs-4">
-            <?php echo  Html::submitButton($model->isNewRecord ? Yii::t('backend', 'Create') : Yii::t('backend', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success btn200' : 'btn btn-primary btn200']) ?>
-        </div>
-        <div class="col-sm-3 col-xs-2">
-            <?php 
-            if (!$model->isNewRecord) {
-                echo Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->id],
-                    [
-                        'class' => 'btn btn-warning btn200 bold',
-                        'data' => [
-                            'confirm' => 'Are you sure you want to delete?',
-                            'method' => 'post',
-                        ]
-                    ]);
-            }
-            ?>
+            <div class="form-group">
+                <div class="col-sm-3 col-xs-2"></div>
+                <div class="col-sm-3 col-xs-4">
+                    <?php
+                    echo \yii\helpers\Html::a('<span class="glyphicon glyphicon-arrow-left"></span>' . Yii::t('backend', 'Back'), ['index'], ['class' => 'btn btn-default btn200']);
+                    ?>
+                </div>
+                <div class="col-sm-3 col-xs-4">
+                    <?php echo Html::submitButton($model->isNewRecord ? Yii::t('backend', 'Create') : Yii::t('backend', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success btn200' : 'btn btn-primary btn200']) ?>
+                </div>
+                <div class="col-sm-3 col-xs-2">
+                    <?php
+                    if (!$model->isNewRecord) {
+                        echo Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->id],
+                            [
+                                'class' => 'btn btn-warning btn200 bold',
+                                'data' => [
+                                    'confirm' => 'Bạn có chắc muốn xóa?',
+                                    'method' => 'post',
+                                ]
+                            ]);
+                    }
+                    ?>
+                </div>
+            </div>
+
+
+            <?php ActiveForm::end(); ?>
+
         </div>
     </div>
-
-
-    <?php ActiveForm::end(); ?>
-
 </div>
+
